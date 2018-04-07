@@ -25,6 +25,12 @@ class CheckBox extends Component {
         this.onChange = this.onChange.bind(this);
     }
 
+    componentWillReceiveProps(newProps) {
+        if (newProps.checked) {
+            this.setState({internalChecked: newProps.checked});
+        }
+    }
+    
     onChange() {
         if (this.props.onChange &&  typeof this.props.checked === 'boolean') {
             // If passing the value as a prop, return the negation of current value
